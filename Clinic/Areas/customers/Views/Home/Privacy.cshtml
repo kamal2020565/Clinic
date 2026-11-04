@@ -1,0 +1,143 @@
+﻿@model List<Doctor>
+
+<div class="container py-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Our Doctors</h1>
+        <p class="text-muted">
+            Meet our experienced medical specialists
+        </p>
+    </div>
+
+    <!-- Doctors -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        @foreach (var item in Model)
+        {
+            <div class="col">
+
+                <div class="card doctor-card h-100 border-0">
+
+                    <!-- Image -->
+                    <div class="doctor-image-container">
+                        <img src="/images/@item.Img"
+                             class="card-img-top doctor-image"
+                             alt="@item.Name">
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-body text-center p-4">
+
+                        <h4 class="card-title fw-bold mb-2">
+                            @item.Name
+                        </h4>
+
+                        <div class="specialization mb-3">
+                            @item.Specialization
+                        </div>
+
+                        <p class="card-text text-muted">
+                            Professional medical consultation and
+                            high-quality healthcare services.
+                        </p>
+
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="card-footer bg-white border-0 text-center pb-4">
+
+                        <a href="/Home/Details/@item.Id"
+                           class="btn btn-primary px-4 rounded-pill">
+                            Details
+                        </a>
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if (ViewBag.currentpage > 1)
+            {
+            <li class="page-item"><a class="page-link" href="/home/privacy?page@( ViewBag.currentpage-1)">Previous</a></li>
+                
+            }
+            @for (var i = 1; i <= ViewBag.TotalNumberoffpage; i++)
+            {
+                
+            <li class="page-item"><a class="page-link" href="/home/privacy?page=@i">@i</a></li>
+            }
+            @if (ViewBag.currentpage != ViewBag.TotalNumberoffpage)
+            {
+                
+            <li class="page-item"><a class="page-link" href="home/privacy?page@( ViewBag.currentpage+1)">Next</a></li>
+            }
+           
+        </ul>
+    </nav>
+</div>
+
+
+<style>
+
+    /* Doctor Card */
+    .doctor-card {
+        border-radius: 18px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+    }
+
+        /* Hover Effect */
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Image container */
+    .doctor-image-container {
+        overflow: hidden;
+    }
+
+    /* Doctor Image */
+    .doctor-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    /* Zoom image when hover */
+    .doctor-card:hover .doctor-image {
+        transform: scale(1.05);
+    }
+
+    /* Specialization */
+    .specialization {
+        display: inline-block;
+        padding: 6px 15px;
+        border-radius: 20px;
+        background: #eaf4ff;
+        color: #0d6efd;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* Button */
+    .doctor-card .btn {
+        transition: all 0.3s ease;
+    }
+
+        .doctor-card .btn:hover {
+            transform: scale(1.05);
+        }
+
+</style>

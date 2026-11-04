@@ -1,0 +1,82 @@
+﻿@using Clinic.ViewModels
+@model DoctorWithSpVM
+
+<!-- Selected Doctor -->
+<div class="row mb-5">
+
+    <div class="col">
+
+        <div class="card doctor-card h-100 border-0">
+
+            <div class="doctor-image-container">
+                <img src="/images/@Model.Doctor.Img"
+                     class="card-img-top doctor-image"
+                     alt="@Model.Doctor.Name">
+            </div>
+
+            <div class="card-body text-center p-4">
+
+                <h4 class="card-title fw-bold mb-2">
+                    @Model.Doctor.Name
+                </h4>
+
+                <div class="specialization mb-3">
+                    @Model.Doctor.Specialization
+                </div>
+
+                <p class="card-text text-muted">
+                    Professional medical consultation and
+                    high-quality healthcare services.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Related Doctors -->
+<h3 class="mb-4">
+    Related Doctors
+</h3>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+    @foreach (var item in Model.Spdoctor)
+    {
+        <div class="col">
+
+            <div class="card doctor-card h-100 border-0">
+
+                <div class="doctor-image-container">
+                    <img src="/images/@item.Img"
+                         class="card-img-top doctor-image"
+                         alt="@item.Name">
+                </div>
+
+                <div class="card-body text-center p-4">
+
+                    <h4 class="card-title fw-bold mb-2">
+                        @item.Name
+                    </h4>
+
+                    <div class="specialization mb-3">
+                        @item.Specialization
+                    </div>
+
+                    <p class="card-text text-muted">
+                        Professional medical consultation and
+                        high-quality healthcare services.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,130 @@
+﻿
+@model IEnumerable<Doctor>
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold">
+            Doctors
+        </h2>
+
+        <!-- Create Button -->
+        <<a asp-area="Admin"
+            asp-controller="DoctorsControlls"
+            asp-action="Create"
+            class="btn btn-primary">
+            Create Doctor
+        </a>
+    </div>
+
+
+    <!-- Doctors Table -->
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-bordered align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Id</th>
+
+                            <th>Name</th>
+
+                            <th>Specialization</th>
+
+                            <th>Image</th>
+
+                            <th class="text-center">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <th scope="row">
+                                    @item.Id
+                                </th>
+
+                                <td>
+                                    @item.Name
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-info text-dark">
+                                        @item.Specialization
+                                    </span>
+                                </td>
+
+                                <td>
+                                    @item.Img
+                                </td>
+
+
+                                <!-- Buttons -->
+                                <td class="text-center">
+
+                                <td class="text-center">
+
+                                    <a asp-area="Admin"
+                                       asp-controller="DoctorsControlls"
+                                       asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-warning btn-sm">
+
+                                        Edit
+
+                                    </a>
+
+                                    <a asp-area="Admin"
+                                       asp-controller="DoctorsControlls"
+                                       asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-danger btn-sm delete-doctor">
+
+                                        <i class="bi bi-trash"></i>
+                                        Delete
+
+                                    </a>
+
+                                </td>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+   
+
+  
+
+                                        >
+                                        
+
+
+
+
+
